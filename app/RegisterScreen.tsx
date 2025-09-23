@@ -1,15 +1,13 @@
 import Entypo from '@expo/vector-icons/Entypo';
-import React from 'react';
-import { Button, Dimensions, Text, TextInput, TouchableOpacity, View } from 'react-native';
-
 import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Dimensions, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export default function App() {
+export default function RegisterScreen() {
   const navigation = useNavigation();
-
   return (
     <View style={{ top: 100, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={{ fontSize: 40 , fontWeight: 'bold' }}>Connexion</Text>
+      <Text style={{ fontSize: 40 }}>Créer un compte</Text>
       <Entypo name="user" size={48} color="black" style={{ margin: 30 }} />
       <TextInput
         placeholder="Email"
@@ -22,9 +20,14 @@ export default function App() {
         style={[localStyles.input, localStyles.inputText]}
         secureTextEntry
       />
-      <Button title="Crée un compte ?" onPress={() => navigation.navigate('RegisterScreen')} />
+      <TextInput
+        placeholder="Confirmer le mot de passe"
+        placeholderTextColor="white"
+        style={[localStyles.input, localStyles.inputText]}
+        secureTextEntry
+      />
       <TouchableOpacity style={localStyles.button} onPress={() => { }}>
-        <Text style={localStyles.buttonText}>Se connecter</Text>
+        <Text style={localStyles.buttonText}>Crée le compte</Text>
       </TouchableOpacity>
     </View>
   );
@@ -58,12 +61,12 @@ const localStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#000000ff",
     margin: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "center" as const,
+    alignItems: "center" as const,
   },
   buttonText: {
     color: "white", // texte blanc
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: "bold" as const,
   },
 });
